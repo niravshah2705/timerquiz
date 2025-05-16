@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Question {{ question_id + 1 }}</title>
+    <style>
+        #timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>{{ question_data['section'] }}</h2>
+    <p>====================================</p>
+    <h2>Question {{ question_id + 1 }}</h2>
+    <div id="timer">Time Left: {{ timeout }} seconds</div>
+    <p>{{ question_data['question'] }}</p>
+    <form id="question-form" method="POST" action="{{ url_for('submit_answer', question_id=question_id) }}">
+        {% if question_data['type'] == 'single' %}
+        {% for i, option in enumerate(question_data['options']) %}
+        <div>
+            <input type="radio" name="answer" value="{{ chr(ord('a') + i) }}" required>
+            <label for="{{ chr(ord('a') + i) }}">{{ chr(ord('a') + i) }}. {{ option }}</label>
+        </div>
+        {% endfor %}
+        {% elif question_data['type'] == 'multiple' %}
+        {% for i, option in enumerate(question_data['options']) %}
+        <div>
+            <input type="checkbox" name="answer" value="{{ chr(ord('a') + i) }}">
+            <label for="{{ chr(ord('a') + i) }}">{{ chr(ord('a') + i) }}. {{ option }}</label>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <br>
+        <button type="submit">Submit Answer</button>
+    </form>
+
+    <script>
+        var timeLeft = {{ timeout }};
+        var timerDisplay = document.getElementById('timer');
+        var questionForm = document.getElementById('question-form');
+
+        function updateTimer() {
+            timerDisplay.textContent = 'Time Left: ' + timeLeft + ' seconds';
+            if (timeLeft <= 0) {
+                questionForm.submit(); // Automatically submit the form
+            } else {
+                timeLeft--;
+                setTimeout(updateTimer, 1000); // Update every 1 second
+            }
+        }
+
+        updateTimer(); // Start the timer when the page loads
+    </script>
+</body>
+
+</html>

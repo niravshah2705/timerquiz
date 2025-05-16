@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz Application</title>
+</head>
+
+<body>
+    <h1>Welcome to the Quiz!</h1>
+    <p>There are {{ num_questions }} questions in total.</p>
+    <a href="{{ url_for('question', question_id=0) }}">Start Quiz</a>
+</body>
+
+</html>

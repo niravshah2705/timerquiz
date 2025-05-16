@@ -1,0 +1,11 @@
+section,question,option_1,option_2,option_3,option_4,correct_answer,type
+Math,"What is the value of $\sqrt{16}$?",4,-4,8,2,"a","single"
+Science,"Which planet is known as the 'Red Planet'?",Mars,Venus,Jupiter,Saturn,"a","single"
+History,"Who was the first President of India?",Rajendra Prasad,Jawaharlal Nehru,Sardar Vallabhbhai Patel,Indira Gandhi,"a","single"
+Math,"Select all the even numbers from the following.",1,2,3,4,"b,d","multiple"
+Science,"Which of the following are states of matter?",Solid,Liquid,Gas,Plasma,"a,b,c,d","multiple"
+Computer Science,"Which of these are programming languages?",Python,Java,HTML,CSS,"a,b","multiple"
+English,"Choose the correct synonym for 'happy'.",Sad,Joyful,Angry,Tired,"b","single"
+Geography,"Which is the largest continent?",Asia,Africa,Europe,North America,"a","single"
+Math,"Solve for x: 2x + 5 = 11",3,4,6,8,"a","single"
+Science,"Which gas is most abundant in Earth's atmosphere?",Oxygen,Nitrogen,Carbon Dioxide,Helium,"b","single"

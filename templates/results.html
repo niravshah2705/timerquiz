@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz Results</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Quiz Results</h1>
+    <p>Your final score: {{ score }} / {{ num_questions }}</p>
+    <p>Total time taken: {{ total_time }}</p>
+
+    <h2>Detailed Results:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Your Answer</th>
+                <th>Correct Answer</th>
+                <th>Time Taken</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in detailed_results %}
+            <tr>
+                <td>{{ result['question'] }}</td>
+                <td>{{ result['user_answer'] }}</td>
+                <td>{{ result['correct_answer'] }}</td>
+                <td>{{ result['time_taken'] }}</td>
+                <td class="{% if result['is_correct'] %}correct{% else %}incorrect{% endif %}">
+                    {% if result['is_correct'] %}Correct{% else %}Incorrect{% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
